@@ -1,13 +1,14 @@
-import React from "react";
-import Helmet from "react-helmet";
-import Img from 'gatsby-image';
-import styled from 'styled-components';
-import { PageWrapper } from '../templates/page';
+import React from 'react'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import styled from 'styled-components'
+import Layout from '../components/Layout'
+import { PageWrapper } from './page'
 
 const WorkWrapper = styled(PageWrapper)`
   flex-direction: row;
   align-items: center;
-`;
+`
 
 const InfoBox = styled.div`
   display: flex;
@@ -18,11 +19,11 @@ const InfoBox = styled.div`
   @media screen and (orientation: portrait) {
     flex-direction: column;
   }
-`;
+`
 
 const LinkWrapper = styled.div`
   flex: 1 0 0%;
-`;
+`
 
 const ExtLink = styled.a`
   color: red;
@@ -30,7 +31,7 @@ const ExtLink = styled.a`
   padding: 1em 0;
   text-decoration: none;
   text-align: right;
-`;
+`
 
 const Screenshot = styled(Img)`
   flex: 1 0 0%;
@@ -41,41 +42,40 @@ const Screenshot = styled(Img)`
   @media screen and (orientation: portrait) {
     width: calc(100vw - 2px);
   }
-`;
+`
 
-const Template = ({ data }) => {
-  const { markdownRemark: project } = data;
+export default ({ data }) => {
+  const project = data.markdownRemark
   return (
-    <WorkWrapper>
-      <Helmet title={`Work - ${project.frontmatter.title}`} />
-      <InfoBox>
-        <LinkWrapper>
-          <ExtLink href={project.frontmatter.url}>
-            <p>{project.frontmatter.title}</p>
-            <p>{project.frontmatter.url}</p>
-          </ExtLink>
-          <ExtLink href={project.frontmatter.src}>
-            {(project.frontmatter.src) && <p>GitHub</p>}
-            <p style={{ flexWrap: `wrap` }}>tools: {project.frontmatter.tools}</p>
-          </ExtLink>
-        </LinkWrapper>
-        <Screenshot
-          sizes={project.frontmatter.image.childImageSharp.sizes}
-          alt={project.frontmatter.title}
-        />
-      </InfoBox>
-    </WorkWrapper>
-  );
+    <Layout>
+      <WorkWrapper>
+        <InfoBox>
+          <LinkWrapper>
+            <ExtLink href={project.frontmatter.url}>
+              <p>{project.frontmatter.title}</p>
+              <p>{project.frontmatter.url}</p>
+            </ExtLink>
+            <ExtLink href={project.frontmatter.src}>
+              {project.frontmatter.src && <p>GitHub</p>}
+              <p style={{ flexWrap: `wrap` }}>
+                tools: {project.frontmatter.tools}
+              </p>
+            </ExtLink>
+          </LinkWrapper>
+          <Screenshot
+            sizes={project.frontmatter.image.childImageSharp.sizes}
+            alt={project.frontmatter.title}
+          />
+        </InfoBox>
+      </WorkWrapper>
+    </Layout>
+  )
 }
 
-export default Template;
-
-export const pageQuery = graphql`
-  query WorkPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
-        path
         title
         url
         src
@@ -90,4 +90,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
