@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import { PageWrapper } from '../templates/page'
 import Layout from '../components/Layout'
@@ -59,7 +60,7 @@ export default About
 export { AboutWrapper }
 
 export const query = graphql`
-  query ContactQuery {
+  query {
     site {
       siteMetadata {
         email

@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 import Header from './Header'
 import Footer from './Footer'
 import styled from 'styled-components'
 
-const LayoutWrapper = styled.main`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +12,7 @@ const LayoutWrapper = styled.main`
   background: white;
 `
 
-const Row = styled.div`
+const Content = styled.section`
   flex: 1 0 0%;
   display: flex;
   flex-direction: column;
@@ -22,29 +22,7 @@ const Row = styled.div`
   position: relative;
 `
 
-const NavPanel = styled(Link)`
-  background: transparent;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  margin: 1vw;
-  height: 20vw;
-  width: 20vw;
-  position: absolute;
-  right: 0;
-  z-index: 1;
-
-  @media (hover: hover) {
-    &:hover {
-      background: pink;
-    }
-  }
-
-  @media screen and (orientation: portrait) {
-    border: 1px solid pink;
-  }
-`
-
-const Layout = ({ children }) => (
+export default ({ children }) => (
   <StaticQuery
     query={graphql`
       query LayoutQuery {
@@ -59,16 +37,11 @@ const Layout = ({ children }) => (
     render={data => {
       const { title, srcUrl } = data.site.siteMetadata
       return (
-        <>
-          <LayoutWrapper>
+          <Container>
             <Header title={title} />
-            <Row>
-              <NavPanel to='/work/' />
-              {children}
-            </Row>
+            <Content>{children}</Content>
             <Footer title={title} srcUrl={srcUrl} />
-          </LayoutWrapper>
-        </>
+          </Container>
       )
     }}
   />

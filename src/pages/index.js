@@ -12,9 +12,9 @@ const Wrapper = styled(PageWrapper)`
 export default () => {
   return (
     <Layout>
-      <PageWrapper>
+      <Wrapper>
         <Home />
-      </PageWrapper>
+      </Wrapper>
     </Layout>
   )
 }
