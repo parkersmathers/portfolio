@@ -5,9 +5,20 @@ module.exports = {
     siteUrl: `https://parkersmathers.github.io`,
     srcUrl: `https://github.com/parkersmathers`,
     description: `Work portfolio for Parker Smathers, web/mobile developer and design enthusiast.`,
-    email: `parker@fluorastudio.com`,
+    email: `parker@fluorastudio.com`
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$/,
+        exclude: /(node_modules|cache|public)/,
+        options: {
+          emitWarning: true,
+          failOnError: false
+        }
+      }
+    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -26,13 +37,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1280,
-            },
-          },
+              maxWidth: 1280
+            }
+          }
         ]
       }
     },
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-react-helmet'
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-react-helmet`
   ]
-};
+}
