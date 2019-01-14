@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import styled from 'styled-components';
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 
 const Item = styled.li`
   display: flex;
@@ -22,7 +22,7 @@ const Item = styled.li`
     border-bottom-color: lawngreen;
     height: auto;
   }
-`;
+`
 
 const StyledLink = styled(Link)`
   flex: 1 0 0%;
@@ -39,7 +39,7 @@ const StyledLink = styled(Link)`
     padding: 0;
     width: 100%;
   }
-`;
+`
 
 const Title = styled.h2`
   font-weight: 500;
@@ -56,7 +56,7 @@ const Title = styled.h2`
     font-size: 1em;
     white-space: nowrap;
   }
-`;
+`
 
 const Url = styled.p`
   flex: 1 0 0%;
@@ -73,11 +73,11 @@ const Url = styled.p`
     word-break: break-all;
     word-wrap: break-word;
   }
-`;
+`
 
 const SrcLink = styled.a`
   color: inherit;
-  padding: .5em 0 0;
+  padding: 0.5em 0 0;
   text-align: right;
 
   &:hover {
@@ -88,7 +88,7 @@ const SrcLink = styled.a`
   @media screen and (orientation: portrait) {
     order: +1;
   }
-`;
+`
 
 const HoverBoard = styled.div`
   display: flex;
@@ -116,9 +116,9 @@ const HoverBoard = styled.div`
   } */}
 
   p {
-    font-size: .75em;
+    font-size: 0.75em;
   }
-`;
+`
 
 const Project = ({ project }) => (
   <Item>
@@ -137,4 +137,4 @@ const Project = ({ project }) => (
   </Item>
 )
 
-export default Project;
+export default Project

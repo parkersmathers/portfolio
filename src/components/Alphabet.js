@@ -16,16 +16,15 @@ const AZGrid = styled.div`
   }
 `;
 
-const letters = Array.from(`abcdefghijklmnopqrstuvwxyz.`)
-const Alphabet = ({ letters }) => ({
+const Alphabet = () => ({
   render() {
-    const cells = letters.map((letter) => {
-      return (
-        <Letter key={letter} letter={letter} />
-      )
-    })
+    const letters = Array.from(`abcdefghijklmnopqrstuvwxyz.`)
     return (
-      <AZGrid>{cells}</AZGrid>
+      <AZGrid>
+        {letters.map(letter => 
+          <Letter key={letter} letter={letter} />
+        )}
+      </AZGrid>
     )
   }
 })
