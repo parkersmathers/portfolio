@@ -54,14 +54,14 @@ export default ({ data }) => {
         <Project>
           <Panel>
             <FlexCol>
-              <Link to='/'>home</Link>
+              <Link to='/work'>work</Link>
             </FlexCol>
             <FlexCol>
-              <Link href={project.frontmatter.url}>
+              <Link to={project.frontmatter.url}>
                 <p>{project.frontmatter.title}</p>
                 <p>{project.frontmatter.url}</p>
               </Link>
-              <Link href={project.frontmatter.src}>
+              <Link to={project.frontmatter.src}>
                 {project.frontmatter.src && <p>GitHub</p>}
                 <p>tools: {project.frontmatter.tools}</p>
               </Link>
