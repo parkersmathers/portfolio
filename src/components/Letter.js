@@ -6,6 +6,7 @@ const LetterStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   @media screen and (orientation: portrait) {
     justify-content: center;

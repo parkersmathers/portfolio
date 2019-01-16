@@ -4,11 +4,11 @@ import Header from './Header'
 import Footer from './Footer'
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Layout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100%;
+  min-height: 100vh;
   background: white;
 `
 
@@ -37,14 +37,12 @@ export default ({ children }) => (
     render={data => {
       const { title, srcUrl } = data.site.siteMetadata
       return (
-          <Container>
+          <Layout>
             <Header title={title} />
             <Content>{children}</Content>
             <Footer title={title} srcUrl={srcUrl} />
-          </Container>
+          </Layout>
       )
     }}
   />
 )
-
-export default Layout

@@ -2,9 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-const padding = `1.5em .75em`
-
-const HeaderWrapper = styled.header`
+const Header = styled.header`
   display: flex;
   width: 100%;
 
@@ -19,7 +17,7 @@ const HeaderWrapper = styled.header`
 
 const Title = styled.div`
   flex: 1 0 0%;
-  padding: ${padding};
+  padding: 1.5em .75em;
   margin-left: 0.75em;
   width: 100%;
 
@@ -37,7 +35,7 @@ const Nav = styled(Title)`
 
 const Header = ({ title }) => {
   return (
-    <HeaderWrapper>
+    <Header>
       <Title>
         <Link to='/'>{title}</Link>
       </Title>
@@ -48,9 +46,8 @@ const Header = ({ title }) => {
           <Link to='/about'>about</Link>
         </div>
       </Nav>
-    </HeaderWrapper>
+    </Header>
   )
 }
 
 export default Header
-export { padding }

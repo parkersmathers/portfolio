@@ -1,14 +1,14 @@
-import React from 'react';
-import Alphabet from './Alphabet';
-import styled from 'styled-components';
+import React from 'react'
+import Alphabet from './Alphabet'
+import styled from 'styled-components'
 
-const HomeWrapper = styled.div`
+const Container = styled.div`
   flex: 1 0 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+`
 
 // const P = styled.p`
 //   font-size: 2.8vw;
@@ -41,10 +41,10 @@ const HomeWrapper = styled.div`
 // `;
 
 const Home = () => (
-  <HomeWrapper>
+  <Container>
     <Alphabet />
     {/* <P>“To abstract is to draw out the essence of a matter. To abstract in art is to separate certain fundamentals from irrelevant material which surrounds them.” <span> — Ben Shahn</span></P> */}
-  </HomeWrapper>
-);
+  </Container>
+)
 
-export default Home;
+export default Home

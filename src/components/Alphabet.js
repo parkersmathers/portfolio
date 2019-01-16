@@ -1,9 +1,9 @@
-import React from 'react';
-import Letter from './Letter';
-import styled from 'styled-components';
+import React from 'react'
+import Letter from './Letter'
+import styled from 'styled-components'
 
 const AZGrid = styled.div`
-  border: .5em solid ghostwhite;
+  border: 0.5em solid ghostwhite;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(9, 10vw);
@@ -14,19 +14,19 @@ const AZGrid = styled.div`
     grid-auto-rows: 9vh;
     text-align: center;
   }
-`;
+`
 
 const Alphabet = () => ({
   render() {
     const letters = Array.from(`abcdefghijklmnopqrstuvwxyz.`)
     return (
       <AZGrid>
-        {letters.map(letter => 
+        {letters.map(letter => (
           <Letter key={letter} letter={letter} />
-        )}
+        ))}
       </AZGrid>
     )
   }
 })
 
-export default Alphabet;
+export default Alphabet

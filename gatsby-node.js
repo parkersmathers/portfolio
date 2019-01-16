@@ -16,8 +16,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  // const workTemplate = path.resolve(`src/templates/work.js`)
-
   return graphql(`
     {
       allMarkdownRemark(

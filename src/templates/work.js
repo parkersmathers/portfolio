@@ -4,37 +4,39 @@ import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import { PageWrapper } from './page'
+import Link from '../components/Link'
 
-const WorkWrapper = styled(PageWrapper)`
+const Wrapper = styled(PageWrapper)`
   flex-direction: row;
   align-items: center;
 `
 
-const InfoBox = styled.div`
+const Project = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 1em;
+  padding: 0 2em;
   width: 100%;
+  border-bottom: 1px solid limegreen;
 
   @media screen and (orientation: portrait) {
     flex-direction: column;
   }
 `
 
-const LinkWrapper = styled.div`
-  flex: 1 0 0%;
+const Panel = styled.div`
+  flex: 4 0 0%;
+  display: flex;
+  justify-content: space-around;
 `
 
-const ExtLink = styled.a`
-  color: red;
-  display: block;
-  padding: 1em 0;
-  text-decoration: none;
-  text-align: right;
+const FlexCol = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 `
 
 const Screenshot = styled(Img)`
-  flex: 1 0 0%;
+  flex: 5 0 0%;
   height: 100%;
   max-width: 100%;
   width: 70vw;
@@ -48,26 +50,29 @@ export default ({ data }) => {
   const project = data.markdownRemark
   return (
     <Layout>
-      <WorkWrapper>
-        <InfoBox>
-          <LinkWrapper>
-            <ExtLink href={project.frontmatter.url}>
-              <p>{project.frontmatter.title}</p>
-              <p>{project.frontmatter.url}</p>
-            </ExtLink>
-            <ExtLink href={project.frontmatter.src}>
-              {project.frontmatter.src && <p>GitHub</p>}
-              <p style={{ flexWrap: `wrap` }}>
-                tools: {project.frontmatter.tools}
-              </p>
-            </ExtLink>
-          </LinkWrapper>
+      <Wrapper>
+        <Project>
+          <Panel>
+            <FlexCol>
+              <Link to='/'>home</Link>
+            </FlexCol>
+            <FlexCol>
+              <Link href={project.frontmatter.url}>
+                <p>{project.frontmatter.title}</p>
+                <p>{project.frontmatter.url}</p>
+              </Link>
+              <Link href={project.frontmatter.src}>
+                {project.frontmatter.src && <p>GitHub</p>}
+                <p>tools: {project.frontmatter.tools}</p>
+              </Link>
+            </FlexCol>
+          </Panel>
           <Screenshot
-            sizes={project.frontmatter.image.childImageSharp.sizes}
+            fluid={project.frontmatter.image.childImageSharp.fluid}
             alt={project.frontmatter.title}
           />
-        </InfoBox>
-      </WorkWrapper>
+        </Project>
+      </Wrapper>
     </Layout>
   )
 }
@@ -82,8 +87,8 @@ export const query = graphql`
         tools
         image {
           childImageSharp {
-            sizes(quality: 100) {
-              ...GatsbyImageSharpSizes
+            fluid(maxWidth: 900, quality: 100) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
