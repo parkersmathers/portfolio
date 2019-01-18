@@ -4,7 +4,7 @@ module.exports = {
     title: `parker smathers`,
     siteUrl: `https://parkersmathers.github.io`,
     srcUrl: `https://github.com/parkersmathers`,
-    description: `Work portfolio for Parker Smathers, web/mobile developer and design enthusiast.`,
+    description: `Portfolio for Parker Smathers, book editor turned frontend developer. JavaScript + Poetry.`,
     email: `parker@fluorastudio.com`
   },
   plugins: [
@@ -37,7 +37,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1280
+              maxWidth: 1000
             }
           }
         ]

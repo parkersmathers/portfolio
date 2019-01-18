@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { PageWrapper } from '../templates/page'
 import Layout from '../components/Layout'
 
-const AboutWrapper = styled(PageWrapper)`
+const About = styled(PageWrapper)`
   justify-content: flex-start;
   margin-bottom: 0;
 
@@ -37,27 +37,24 @@ const AboutWrapper = styled(PageWrapper)`
   }
 `
 
-const About = ({ data }) => {
+export default ({ data }) => {
   const email = data.site.siteMetadata.email
   return (
     <Layout>
-      <AboutWrapper>
+      <About>
         <h3>about:</h3>
         <p>
-          I am a web developer based in Brooklyn, NY. I build websites for
+          I am a web developer based in Marietta, GA. I build websites for
           poets, artists, nonprofits, and other industries.
         </p>
         <h3>contact:</h3>
         <p>
           <a href={`mailto:${email}`}>{email}</a>
         </p>
-      </AboutWrapper>
+      </About>
     </Layout>
   )
 }
-
-export default About
-export { AboutWrapper }
 
 export const query = graphql`
   query {

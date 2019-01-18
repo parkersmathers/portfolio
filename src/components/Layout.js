@@ -12,7 +12,7 @@ const Layout = styled.div`
   background: white;
 `
 
-const Content = styled.section`
+const Content = styled.div`
   flex: 1 0 0%;
   display: flex;
   flex-direction: column;

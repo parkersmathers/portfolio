@@ -33,7 +33,7 @@ const Nav = styled(Title)`
   width: calc(100% - 3em);
 `
 
-const Header = ({ title }) => {
+export default ({ title }) => {
   return (
     <Header>
       <Title>
@@ -50,4 +50,3 @@ const Header = ({ title }) => {
   )
 }
 
-export default Header
