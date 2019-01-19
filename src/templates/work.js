@@ -7,6 +7,17 @@ import { PageWrapper } from './page'
 import Link from '../components/Link'
 
 const Wrapper = styled(PageWrapper)`
+  @media screen and (orientation: portrait) {
+    flex-direction: column-reverse;
+
+    h3 {
+      padding-bottom: 2em;
+    }
+  }
+`
+
+const Row = styled.div`
+  flex: 1;
   flex-direction: row;
   align-items: center;
 
@@ -24,6 +35,7 @@ const Project = styled.div`
 
   @media screen and (orientation: portrait) {
     flex-direction: column-reverse;
+    border-bottom-color: transparent;
   }
 `
 
@@ -31,72 +43,75 @@ const Panel = styled.div`
   flex: 4 0 0%;
   display: flex;
   justify-content: space-around;
+
+  @media screen and (orientation: portrait) {
+    flex-direction: column-reverse;
+  }
 `
 
 const Flex = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-`
-
-const ImgBox = styled(Panel)`
-  flex: 5 0 0%;
-  display: block;
-  height: 100%;
-  max-width: 100%;
-  width: 70vw;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
   @media screen and (orientation: portrait) {
-    width: calc(100vw - 2px);
-    flex: 7 0 0%;
+    flex: 1 0 auto;
   }
 `
 
-// const Screenshot = props => {
-//   let normalizedProps = props
-//   if (props.fluid && props.fluid.presentationWidth) {
-//     normalizedProps = {
-//       ...props,
-//       style: {
-//         ...(props.style || {}),
-//         maxWidth: props.fluid.presentationWidth,
-//         margin: "0 auto", // Used to center the image
-//       },
-//     }
-//   }
+const Image = styled(Img)`
+  flex: 5 0 0%;
+  max-width: 100%;
+  width: 70vw;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-bottom: 1px;
 
-//   return <Img {...normalizedProps} />
-// }
+  img {
+    object-fit: contain !important;
+  }
+
+  @media screen and (orientation: portrait) {
+    width: calc(100vw - 2px);
+    margin-top: 2vh;
+
+    img {
+      width: 98% !important;
+      margin: 0 auto !important;
+      right: 0 !important;
+    }
+  }
+`
 
 export default ({ data }) => {
   const project = data.markdownRemark
   return (
     <Layout>
       <Wrapper>
-        <Project>
-          <Panel>
-            <Flex>
-              <Link to='/work'>&lt; Work</Link>
-            </Flex>
-            <Flex>
-              <Link to={project.frontmatter.url}>
-                <p>{project.frontmatter.title}</p>
-                <p>{project.frontmatter.url}</p>
-              </Link>
-              <Link to={project.frontmatter.src}>
-                {project.frontmatter.src && <p>GitHub</p>}
-                <p>tools: {project.frontmatter.tools}</p>
-              </Link>
-            </Flex>
-          </Panel>
-          <ImgBox>
-            <Img
+        <h3>
+          <Link to='/work'>&lt; work</Link>
+        </h3>
+        <Row>
+          <Project>
+            <Panel>
+              <Flex>
+                <Link to={project.frontmatter.url}>
+                  <p>{project.frontmatter.title}</p>
+                  <p>{project.frontmatter.url}</p>
+                </Link>
+                <Link to={project.frontmatter.src}>
+                  <p>
+                    {project.frontmatter.tools}
+                    {project.frontmatter.src && <span> ...</span>}
+                  </p>
+                </Link>
+              </Flex>
+            </Panel>
+            <Image
               fluid={project.frontmatter.image.childImageSharp.fluid}
               alt={project.frontmatter.title}
             />
-          </ImgBox>
-        </Project>
+          </Project>
+        </Row>
       </Wrapper>
     </Layout>
   )
