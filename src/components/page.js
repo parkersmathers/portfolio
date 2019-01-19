@@ -27,4 +27,5 @@ const PageWrapper = styled.section`
 
 const Page = ({ children }) => <PageWrapper>{children}</PageWrapper>
 
+export default Page
 export { PageWrapper }

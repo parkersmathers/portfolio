@@ -8,17 +8,6 @@ module.exports = {
     email: `parker@fluorastudio.com`
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-eslint`,
-      options: {
-        test: /\.js$|\.jsx$/,
-        exclude: /(node_modules|cache|public)/,
-        options: {
-          emitWarning: true,
-          failOnError: false
-        }
-      }
-    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,

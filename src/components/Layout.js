@@ -37,11 +37,11 @@ export default ({ children }) => (
     render={data => {
       const { title, srcUrl } = data.site.siteMetadata
       return (
-          <Layout>
-            <Header title={title} />
-            <Content>{children}</Content>
-            <Footer title={title} srcUrl={srcUrl} />
-          </Layout>
+        <Layout>
+          <Header title={title} />
+          <Content>{children}</Content>
+          <Footer title={title} srcUrl={srcUrl} />
+        </Layout>
       )
     }}
   />

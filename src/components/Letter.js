@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const LetterStyle = styled.div`
   color: red;
@@ -10,14 +10,12 @@ const LetterStyle = styled.div`
 
   @media screen and (orientation: portrait) {
     justify-content: center;
-    margin: .5em;
+    margin: 0.5em;
     border: 1px outset green;
     border-radius: 50%;
   }
-`;
+`
 
-const Letter = ({ letter }) => (
-  <LetterStyle>{letter}</LetterStyle>
-);
+const Letter = ({ letter }) => <LetterStyle>{letter}</LetterStyle>
 
-export default Letter;
+export default Letter

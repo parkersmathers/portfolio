@@ -49,7 +49,7 @@ export default ({ data }) => {
         </p>
         <h3>contact:</h3>
         <p>
-          <a href={`mailto:${email}`}>{email}</a>
+          <a href={`mailto:${ email }`}>{email}</a>
         </p>
       </About>
     </Layout>

@@ -1,10 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import githubLogo from './images/github-32px.png'
 
 const year = new Date().getFullYear()
 
-const Footer = styled.footer`
+const StyledFooter = styled.footer`
   display: flex;
   align-items: center;
   padding: 1.5em 0.75em;
@@ -42,13 +43,20 @@ const Img = styled.img`
   width: 1.75em;
 `
 
-export default ({ title, srcUrl }) => (
-  <Footer>
+const Footer = ({ title, srcUrl }) => (
+  <StyledFooter>
     <P>
       ©{year} {title}
     </P>
     <A href={srcUrl}>
       <Img src={githubLogo} />
     </A>
-  </Footer>
+  </StyledFooter>
 )
+
+Footer.propTypes = {
+  title: PropTypes.string.isRequired,
+  srcUrl: PropTypes.string.isRequired
+}
+
+export default Footer

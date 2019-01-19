@@ -17,7 +17,7 @@ const AZGrid = styled.div`
 `
 
 const Alphabet = () => ({
-  render() {
+  render () {
     const letters = Array.from(`abcdefghijklmnopqrstuvwxyz.`)
     return (
       <AZGrid>

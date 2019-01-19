@@ -54,7 +54,7 @@ const Title = styled.h2`
   z-index: 1;
 
   @media (hover: hover) {
-    ${StyledLink}:hover & {
+    ${ StyledLink }:hover & {
       color: orangered;
     }
   }
@@ -71,7 +71,7 @@ const Subtitle = styled.p`
   color: lightgray;
   margin-left: -1.5em;
 
-  ${Text}:hover & {
+  ${ Text }:hover & {
     color: silver;
   }
 
@@ -85,14 +85,13 @@ const Subtitle = styled.p`
 
 export default ({ data }) => {
   const renderProjects = data.allMarkdownRemark.edges.map(({ node }) => (
-      <StyledLink key={node.id} to={node.fields.slug}>
-        <Text>
-          <Title>{node.frontmatter.title}</Title>
-          <Subtitle>{node.frontmatter.url}</Subtitle>
-        </Text>
-      </StyledLink>
-    )
-  )
+    <StyledLink key={node.id} to={node.fields.slug}>
+      <Text>
+        <Title>{node.frontmatter.title}</Title>
+        <Subtitle>{node.frontmatter.url}</Subtitle>
+      </Text>
+    </StyledLink>
+  ))
 
   return (
     <Layout>
