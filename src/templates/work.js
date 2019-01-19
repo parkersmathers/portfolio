@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { PageWrapper } from './page'
+import { PageWrapper } from '../components/Page'
 import Link from '../components/Link'
 
 const Wrapper = styled(PageWrapper)`
