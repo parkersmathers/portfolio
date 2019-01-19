@@ -10,7 +10,7 @@ const Wrapper = styled(PageWrapper)`
   background: transparent;
 `
 
-const LinkPanel = styled(Link)`
+const StyledLink = styled(Link)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -33,7 +33,7 @@ const LinkPanel = styled(Link)`
   }
 `
 
-const LinkContent = styled.div`
+const Text = styled.div`
   flex: 1 0 0%;
   display: flex;
   justify-content: flex-start;
@@ -49,12 +49,12 @@ const LinkContent = styled.div`
   }
 `
 
-const ProjectTitle = styled.h2`
+const Title = styled.h2`
   font-weight: 500;
   z-index: 1;
 
   @media (hover: hover) {
-    ${LinkPanel}:hover & {
+    ${StyledLink}:hover & {
       color: orangered;
     }
   }
@@ -66,12 +66,12 @@ const ProjectTitle = styled.h2`
   }
 `
 
-const ProjectUrl = styled.p`
+const Subtitle = styled.p`
   flex: 1 0 0%;
   color: lightgray;
   margin-left: -1.5em;
 
-  ${LinkContent}:hover & {
+  ${Text}:hover & {
     color: silver;
   }
 
@@ -84,14 +84,13 @@ const ProjectUrl = styled.p`
 `
 
 export default ({ data }) => {
-  const renderProjects = data.allMarkdownRemark.edges.map(
-    ({ node }) => (
-      <LinkPanel key={node.id} to={node.fields.slug}>
-        <LinkContent>
-          <ProjectTitle>{node.frontmatter.title}</ProjectTitle>
-          <ProjectUrl>{node.frontmatter.url}</ProjectUrl>
-        </LinkContent>
-      </LinkPanel>
+  const renderProjects = data.allMarkdownRemark.edges.map(({ node }) => (
+      <StyledLink key={node.id} to={node.fields.slug}>
+        <Text>
+          <Title>{node.frontmatter.title}</Title>
+          <Subtitle>{node.frontmatter.url}</Subtitle>
+        </Text>
+      </StyledLink>
     )
   )
 
