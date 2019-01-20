@@ -1,14 +1,16 @@
+/* eslint-disable max-len */
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
+
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `work` })
+    const value = createFilePath({ node, getNode, basePath: `work` })
     createNodeField({
       node,
       name: `slug`,
-      value: slug
+      value
     })
   }
 }
@@ -16,6 +18,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
+  const workTemplate = path.resolve(`./src/templates/work.js`)
   return graphql(`
     {
       allMarkdownRemark(
@@ -33,15 +36,22 @@ exports.createPages = ({ actions, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      return Promise.reject(result.errors)
+      throw result.errors
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const projects = result.data.allMarkdownRemark.edges
+
+    projects.forEach((project, index) => {
+      const previous = index === projects.length - 1 ? null : projects[index + 1].node
+      const next = index === 0 ? null : projects[index - 1].node
+
       createPage({
-        path: node.fields.slug,
-        component: path.resolve(`./src/templates/work.js`),
+        path: project.node.fields.slug,
+        component: workTemplate,
         context: {
-          slug: node.fields.slug
+          slug: project.node.fields.slug,
+          previous,
+          next
         }
       })
     })

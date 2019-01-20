@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable template-curly-spacing */
 module.exports = {
   pathPrefix: `/porfolio`,
   siteMetadata: {
@@ -12,9 +14,9 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/content/work`,
         name: `work`,
-        path: `${__dirname}/src/pages/work/`
-      }
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

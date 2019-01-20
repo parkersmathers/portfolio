@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { PageWrapper } from '../../components/Page'
-import Layout from '../../components/Layout'
+import { PageWrapper } from '../components/Page'
+import Layout from '../components/Layout'
 
 const Wrapper = styled(PageWrapper)`
   justify-content: flex-start;
@@ -84,8 +84,10 @@ const Subtitle = styled.p`
 `
 
 export default ({ data }) => {
-  const renderProjects = data.allMarkdownRemark.edges.map(({ node }) => (
-    <StyledLink key={node.id} to={node.fields.slug}>
+  const projects = data.allMarkdownRemark.edges
+
+  const renderProjects = projects.map(({ node }) => (
+    <StyledLink key={node.fields.slug} to={node.fields.slug}>
       <Text>
         <Title>{node.frontmatter.title}</Title>
         <Subtitle>{node.frontmatter.url}</Subtitle>

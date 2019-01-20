@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import githubLogo from './images/github-32px.png'
+import logo from '../assets/github-32px.png'
 
 const year = new Date().getFullYear()
 
@@ -49,7 +49,7 @@ const Footer = ({ title, srcUrl }) => (
       ©{year} {title}
     </P>
     <A href={srcUrl}>
-      <Img src={githubLogo} />
+      <Img src={logo} />
     </A>
   </StyledFooter>
 )
