@@ -7,9 +7,10 @@ const StyledLink = styled.a`
   padding: 1em 0;
   text-decoration: none;
 
-  p {
+  p, small {
     color: red;
     text-align: right;
+    display: block;
   }
 `
 

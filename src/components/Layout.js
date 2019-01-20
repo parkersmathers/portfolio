@@ -20,6 +20,10 @@ const Content = styled.div`
   min-height: 100%;
   width: 100%;
   position: relative;
+
+  @media screen and (orientation: portrait) {
+    max-width: 700px;
+  }
 `
 
 export default ({ children }) => (

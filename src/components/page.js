@@ -15,8 +15,9 @@ const PageWrapper = styled.section`
     margin-left: 3em;
     padding: 2em 0 1em;
   }
-
+  
   @media screen and (orientation: portrait) {
+    max-width: 700px;
     h3 {
       font-weight: normal;
       margin: 0 1em;

@@ -16,14 +16,8 @@ const Wrapper = styled(PageWrapper)`
   }
 `
 
-const Row = styled.div`
+const Box = styled.div`
   flex: 1;
-  flex-direction: row;
-  align-items: center;
-
-  @media screen and (orientation: portrait) {
-    align-items: stretch;
-  }
 `
 
 const Project = styled.div`
@@ -42,21 +36,7 @@ const Project = styled.div`
 const Panel = styled.div`
   flex: 4 0 0%;
   display: flex;
-  justify-content: space-around;
-
-  @media screen and (orientation: portrait) {
-    flex-direction: column-reverse;
-  }
-`
-
-const Flex = styled.div`
-  flex: 1;
-  display: flex;
   flex-direction: column;
-
-  @media screen and (orientation: portrait) {
-    flex: 1 0 auto;
-  }
 `
 
 const Image = styled(Img)`
@@ -72,7 +52,7 @@ const Image = styled(Img)`
 
   @media screen and (orientation: portrait) {
     width: calc(100vw - 2px);
-    margin-top: 2vh;
+    margin-top: 5vh;
 
     img {
       width: 98% !important;
@@ -90,28 +70,24 @@ export default ({ data }) => {
         <h3>
           <Link to='/work'>&lt; work</Link>
         </h3>
-        <Row>
+        <Box>
           <Project>
             <Panel>
-              <Flex>
-                <Link to={project.frontmatter.url}>
-                  <p>{project.frontmatter.title}</p>
-                  <p>{project.frontmatter.url}</p>
-                </Link>
-                <Link to={project.frontmatter.src}>
-                  <p>
-                    {project.frontmatter.tools}
-                    {project.frontmatter.src && <span> ...</span>}
-                  </p>
-                </Link>
-              </Flex>
+              <Link to={project.frontmatter.url}>
+                <p>{project.frontmatter.title}</p>
+                <small>{project.frontmatter.url}</small>
+              </Link>
+              <Link to={project.frontmatter.src}>
+                <p>{project.frontmatter.tools}</p>
+                <small>{project.frontmatter.src}</small>
+              </Link>
             </Panel>
             <Image
               fluid={project.frontmatter.image.childImageSharp.fluid}
               alt={project.frontmatter.title}
             />
           </Project>
-        </Row>
+        </Box>
       </Wrapper>
     </Layout>
   )
