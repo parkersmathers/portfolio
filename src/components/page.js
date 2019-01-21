@@ -8,6 +8,8 @@ const PageWrapper = styled.section`
   width: 100%;
   border: 1px solid black;
   border-radius: 15px;
+  height: 100%;
+  min-height: 100%;
 
   h3 {
     font-weight: 600;

@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby'
 import Header from './Header'
 import Footer from './Footer'
 import styled from 'styled-components'
+import Styles from './Styles'
 
 const Layout = styled.div`
   display: flex;
@@ -12,19 +13,19 @@ const Layout = styled.div`
   background: white;
 `
 
-const Content = styled.div`
-  flex: 1 0 0%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 100%;
-  width: 100%;
-  position: relative;
+// const Content = styled.div`
+//   flex: 1 0 0%;
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+//   min-height: 100%;
+//   width: 100%;
+//   position: relative;
 
-  @media screen and (orientation: portrait) {
-    max-width: 700px;
-  }
-`
+//   @media screen and (orientation: portrait) {
+//     max-width: 700px;
+//   }
+// `
 
 export default ({ children }) => (
   <StaticQuery
@@ -41,11 +42,14 @@ export default ({ children }) => (
     render={data => {
       const { title, srcUrl } = data.site.siteMetadata
       return (
-        <Layout>
-          <Header title={title} />
-          <Content>{children}</Content>
-          <Footer title={title} srcUrl={srcUrl} />
-        </Layout>
+        <>
+          <Styles />
+          <Layout>
+            <Header title={title} />
+            {children}
+            <Footer title={title} srcUrl={srcUrl} />
+          </Layout>
+        </>
       )
     }}
   />

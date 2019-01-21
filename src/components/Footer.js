@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import logo from '../assets/github-32px.png'
+import github from '../assets/github-32px.png'
 
 const year = new Date().getFullYear()
 
@@ -14,6 +14,7 @@ const StyledFooter = styled.footer`
 
   @media screen and (orientation: portrait) {
     justify-content: center;
+    max-width: 700px;
   }
 `
 
@@ -48,8 +49,8 @@ const Footer = ({ title, srcUrl }) => (
     <P>
       ©{year} {title}
     </P>
-    <A href={srcUrl}>
-      <Img src={logo} />
+    <A href={srcUrl} target='_blank' rel='noopener'>
+      <Img src={github} alt='source code' />
     </A>
   </StyledFooter>
 )
