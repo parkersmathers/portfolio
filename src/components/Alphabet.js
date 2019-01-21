@@ -1,8 +1,7 @@
 import React from 'react'
-import Letter from './Letter'
 import styled from 'styled-components'
 
-const AZGrid = styled.div`
+const Grid = styled.div`
   border: 0.5em solid ghostwhite;
   border-radius: 10px;
   display: grid;
@@ -16,17 +15,29 @@ const AZGrid = styled.div`
   }
 `
 
-const Alphabet = () => ({
-  render () {
-    const letters = Array.from(`abcdefghijklmnopqrstuvwxyz.`)
-    return (
-      <AZGrid>
-        {letters.map(letter => (
-          <Letter key={letter} letter={letter} />
-        ))}
-      </AZGrid>
-    )
+const Letter = styled.div`
+  color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (orientation: portrait) {
+    justify-content: center;
+    margin: 0.5em;
+    border: 1px outset green;
+    border-radius: 50%;
   }
-})
+`
+
+const letters = Array.from(`abcdefghijklmnopqrstuvwxyz.`)
+
+const Alphabet = () => (
+  <Grid>
+    {letters.map(letter => (
+      <Letter key={letter}>{letter}</Letter>
+    ))}
+  </Grid>
+)
 
 export default Alphabet
