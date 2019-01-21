@@ -5,8 +5,8 @@ module.exports = {
   siteMetadata: {
     title: `parker smathers`,
     siteUrl: `https://parkersmathers.github.io`,
-    srcUrl: `https://github.com/parkersmathers`,
-    description: `Portfolio for Parker Smathers, book editor turned frontend developer. JavaScript + Poetry.`,
+    srcUrl: `https://github.com/parkersmathers/portfolio`,
+    description: `Portfolio for Parker Smathers, book editor turned frontend developer.`,
     email: `parker@fluorastudio.com`
   },
   plugins: [
