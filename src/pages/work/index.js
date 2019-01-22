@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { PageWrapper } from '../components/Page'
-import Layout from '../components/Layout'
+import { PageWrapper } from '../../components/Page'
+import Layout from '../../components/Layout'
 
 const Wrapper = styled(PageWrapper)`
   justify-content: flex-start;
@@ -107,7 +107,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___title], order: ASC }) {
+    allMarkdownRemark {
       edges {
         node {
           id
