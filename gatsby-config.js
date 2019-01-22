@@ -1,20 +1,22 @@
+/* eslint-disable max-len */
+/* eslint-disable template-curly-spacing */
 module.exports = {
   pathPrefix: `/porfolio`,
   siteMetadata: {
     title: `parker smathers`,
     siteUrl: `https://parkersmathers.github.io`,
-    srcUrl: `https://github.com/parkersmathers`,
-    description: `Work portfolio for Parker Smathers, web/mobile developer and design enthusiast.`,
-    email: `parker@fluorastudio.com`,
+    srcUrl: `https://github.com/parkersmathers/portfolio`,
+    description: `Portfolio for Parker Smathers, book editor turned frontend developer.`,
+    email: `parker@fluorastudio.com`
   },
   plugins: [
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/src/pages/work`,
         name: `work`,
-        path: `${__dirname}/src/pages/work/`
-      }
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -26,13 +28,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1280,
-            },
-          },
+              maxWidth: 1000
+            }
+          }
         ]
       }
     },
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-react-helmet'
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-react-helmet`
   ]
-};
+}

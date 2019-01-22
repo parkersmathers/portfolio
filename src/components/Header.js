@@ -1,10 +1,8 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import styled from 'styled-components';
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 
-const padding = `1.5em .75em`
-
-const HeaderWrapper = styled.header`
+const Header = styled.header`
   display: flex;
   width: 100%;
 
@@ -15,12 +13,12 @@ const HeaderWrapper = styled.header`
       text-align: center;
     }
   }
-`;
+`
 
 const Title = styled.div`
   flex: 1 0 0%;
-  padding: ${padding};
-  margin-left: .75em;
+  padding: 1.5em .75em;
+  margin-left: 0.75em;
   width: 100%;
 
   @media screen and (orientation: portrait) {
@@ -29,28 +27,25 @@ const Title = styled.div`
     justify-content: center;
     margin-left: 0;
   }
-`;
+`
 
 const Nav = styled(Title)`
   width: calc(100% - 3em);
-`;
+`
 
-const Header = ({ title }) => {
+export default ({ title }) => {
   return (
-    <HeaderWrapper>
+    <Header>
       <Title>
-        <Link to="/">{title}</Link>
+        <Link to='/'>{title}</Link>
       </Title>
       <Nav>
         <div>
-          <Link to="/work">work</Link>
+          <Link to='/work'>work</Link>
           <span>/</span>
-          <Link to="/about">about</Link>
+          <Link to='/about'>about</Link>
         </div>
       </Nav>
-    </HeaderWrapper>
+    </Header>
   )
 }
-
-export default Header;
-export { padding };

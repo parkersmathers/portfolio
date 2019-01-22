@@ -1,93 +1,182 @@
-import React from "react";
-import Helmet from "react-helmet";
-import Img from 'gatsby-image';
-import styled from 'styled-components';
-import { PageWrapper } from '../templates/page';
+import React from 'react'
+import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
+import styled from 'styled-components'
+import Layout from '../components/Layout'
+import { PageWrapper } from '../components/Page'
 
-const WorkWrapper = styled(PageWrapper)`
-  flex-direction: row;
-  align-items: center;
-`;
+const Wrapper = styled(PageWrapper)`
+  @media screen and (orientation: portrait) {
+    flex-direction: column-reverse;
+  }
+`
 
-const InfoBox = styled.div`
+const Box = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`
+
+const Project = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 1em;
+  padding: 0 2em;
   width: 100%;
+  border-bottom: 1px solid limegreen;
 
   @media screen and (orientation: portrait) {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    border-bottom-color: transparent;
+    padding: 0 1em;
   }
-`;
+`
 
-const LinkWrapper = styled.div`
-  flex: 1 0 0%;
-`;
+const Panel = styled.div`
+  flex: 3 0 0%;
+  display: flex;
+  flex-direction: column;
+`
 
-const ExtLink = styled.a`
-  color: red;
-  display: block;
-  padding: 1em 0;
-  text-decoration: none;
-  text-align: right;
-`;
-
-const Screenshot = styled(Img)`
-  flex: 1 0 0%;
-  height: 100%;
+const Image = styled(Img)`
+  flex: 5 0 0%;
   max-width: 100%;
   width: 70vw;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin: 1px 0;
+
+  img {
+    object-fit: contain !important;
+  }
 
   @media screen and (orientation: portrait) {
     width: calc(100vw - 2px);
-  }
-`;
+    margin-top: 5vh;
 
-const Template = ({ data }) => {
-  const { markdownRemark: project } = data;
+    img {
+      width: 98% !important;
+      margin: 0 auto !important;
+      right: 0 !important;
+    }
+  }
+`
+
+const Navbar = styled.nav`
+  display: flex;
+  align-items: space-between;
+  justify-content: center;
+
+  @media screen and (orientation: portrait) {
+    justify-content: center;
+    max-width: 700px;
+  }
+`
+
+const Prev = styled.p`
+  border: 1px solid red;
+  border-radius: 50%;
+  height: 1em;
+  width: 1em;
+
+  @media screen and (orientation: portrait) {
+    height: 2em;
+    width: 2em;
+  }
+`
+
+const Next = styled(Prev)`
+  float: right;
+`
+
+const Direction = styled(Link)`
+  font-size: 1.25em;
+  display: block;
+  padding: 1em;
+
+  &:hover {
+    ${Prev} {
+      background-color: pink;
+    }
+    ${Next} {
+      background-color: silver;
+    }
+  }
+`
+
+const A = styled.a`
+  display: block;
+  padding: 1em 0;
+  text-decoration: none;
+
+  p,
+  small {
+    color: red;
+    text-align: right;
+    display: block;
+  }
+`
+
+export default ({ data, pageContext }) => {
+  const project = data.markdownRemark
+  const { previous, next } = pageContext
+  console.log(pageContext)
   return (
-    <WorkWrapper>
-      <Helmet title={`Work - ${project.frontmatter.title}`} />
-      <InfoBox>
-        <LinkWrapper>
-          <ExtLink href={project.frontmatter.url}>
-            <p>{project.frontmatter.title}</p>
-            <p>{project.frontmatter.url}</p>
-          </ExtLink>
-          <ExtLink href={project.frontmatter.src}>
-            {(project.frontmatter.src) && <p>GitHub</p>}
-            <p style={{ flexWrap: `wrap` }}>tools: {project.frontmatter.tools}</p>
-          </ExtLink>
-        </LinkWrapper>
-        <Screenshot
-          sizes={project.frontmatter.image.childImageSharp.sizes}
-          alt={project.frontmatter.title}
-        />
-      </InfoBox>
-    </WorkWrapper>
-  );
+    <Layout>
+      <Wrapper>
+        <Navbar>
+          <Box>
+            {previous && (
+              <Direction to={previous.fields.slug}>
+                <Prev />
+              </Direction>
+            )}
+          </Box>
+          <Box>
+            {next && (
+              <Direction to={next.fields.slug}>
+                <Next />
+              </Direction>
+            )}
+          </Box>
+        </Navbar>
+        <Box>
+          <Project>
+            <Panel>
+              <A href={project.frontmatter.url} target='_blank' rel='noopener'>
+                <p>{project.frontmatter.title}</p>
+                <small>{project.frontmatter.url}</small>
+              </A>
+              <A href={project.frontmatter.src} target='_blank' rel='noopener'>
+                <p>{project.frontmatter.tools}</p>
+                <small>{project.frontmatter.src}</small>
+              </A>
+            </Panel>
+            <Image
+              fluid={project.frontmatter.image.childImageSharp.fluid}
+              alt={project.frontmatter.title}
+            />
+          </Project>
+        </Box>
+      </Wrapper>
+    </Layout>
+  )
 }
 
-export default Template;
-
-export const pageQuery = graphql`
-  query WorkPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
+export const query = graphql`
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
-        path
         title
         url
         src
         tools
         image {
           childImageSharp {
-            sizes(quality: 100) {
-              ...GatsbyImageSharpSizes
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
       }
     }
   }
-`;
+`
