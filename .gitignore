@@ -69,11 +69,5 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-.tern-project
-images
-files.js
-GatsbyImage.js
-Rows.js
-_junk
+# IDE specific
 .vscode/
-.DS_Store
