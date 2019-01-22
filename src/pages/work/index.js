@@ -10,7 +10,7 @@ const Wrapper = styled(PageWrapper)`
   background: transparent;
 `
 
-const StyledLink = styled(Link)`
+const Card = styled(Link)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -54,7 +54,7 @@ const Title = styled.h2`
   z-index: 1;
 
   @media (hover: hover) {
-    ${StyledLink}:hover & {
+    ${Card}:hover & {
       color: orangered;
     }
   }
@@ -87,12 +87,12 @@ export default ({ data }) => {
   const projects = data.allMarkdownRemark.edges
 
   const renderProjects = projects.map(({ node }) => (
-    <StyledLink key={node.fields.slug} to={node.fields.slug}>
+    <Card key={node.fields.slug} to={node.fields.slug}>
       <Text>
         <Title>{node.frontmatter.title}</Title>
         <Subtitle>{node.frontmatter.url}</Subtitle>
       </Text>
-    </StyledLink>
+    </Card>
   ))
 
   return (
