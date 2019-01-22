@@ -67,3 +67,5 @@ files.js
 GatsbyImage.js
 Rows.js
 _junk
+.vscode/
+.DS_Store
