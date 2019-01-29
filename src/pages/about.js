@@ -1,8 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { PageWrapper } from '../templates/page';
+import React from 'react'
+import { graphql } from 'gatsby'
+import styled from 'styled-components'
+import { PageWrapper } from '../components/Page'
+import Layout from '../components/Layout'
 
-const AboutWrapper = styled(PageWrapper)`
+const About = styled(PageWrapper)`
   justify-content: flex-start;
   margin-bottom: 0;
 
@@ -24,7 +26,6 @@ const AboutWrapper = styled(PageWrapper)`
   }
 
   @media screen and (orientation: portrait) {
-
     h3:last-of-type {
       margin: 0 1em;
     }
@@ -34,29 +35,33 @@ const AboutWrapper = styled(PageWrapper)`
       margin: 0 2em;
     }
   }
-`;
+`
 
-const About = ({ data }) => {
+export default ({ data }) => {
   const email = data.site.siteMetadata.email
   return (
-    <AboutWrapper>
-      <h3>about:</h3>
-      <p>I am a web developer based in Brooklyn, NY. I build websites for poets, artists, nonprofits, and other industries.</p>
-      <h3>contact:</h3>
-      <p><a href={`mailto:${email}`}>{email}</a></p>
-    </AboutWrapper>
+    <Layout>
+      <About>
+        <h3>about:</h3>
+        <p>
+          I am a web developer based in Marietta, GA. I build websites for
+          poets, artists, nonprofits, and other industries.
+        </p>
+        <h3>contact:</h3>
+        <p>
+          <a href={`mailto:${ email }`}>{email}</a>
+        </p>
+      </About>
+    </Layout>
   )
 }
 
-export default About;
-export { AboutWrapper };
-
 export const query = graphql`
-  query ContactQuery {
+  query {
     site {
       siteMetadata {
         email
       }
     }
   }
-`;
+`
