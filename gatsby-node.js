@@ -5,11 +5,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `work` })
+    // Turn markdown files in `src/pages/work` directory into `/work/slug`
+    const relativeFilePath = createFilePath({ 
+      node, 
+      getNode, 
+      basePath: `work`,
+      trailingSlash: false
+    })
+
+    // Creates query'able field 'slug'
     createNodeField({
       node,
       name: `slug`,
-      value: slug
+      value: `/work${relativeFilePath}`
     })
   }
 }
