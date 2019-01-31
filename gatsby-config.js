@@ -1,7 +1,4 @@
-/* eslint-disable max-len */
-/* eslint-disable template-curly-spacing */
 module.exports = {
-  pathPrefix: `/porfolio`,
   siteMetadata: {
     title: `parker smathers`,
     siteUrl: `https://parkersmathers.github.io`,
