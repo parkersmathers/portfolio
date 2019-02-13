@@ -72,19 +72,17 @@ const Navbar = styled.nav`
 `
 
 const Prev = styled.p`
-  border: 1px solid red;
-  border-radius: 50%;
-  height: 1em;
-  width: 1em;
-
-  @media screen and (orientation: portrait) {
-    height: 2em;
-    width: 2em;
-  }
+  width: 0;
+  height: 0;
+  border-top: 0.5em solid transparent;
+  border-right: 1em solid rgba(0, 0, 0, 0.1);
+  border-bottom: 0.5em solid transparent;
 `
 
 const Next = styled(Prev)`
   float: right;
+  border-left: 1em solid rgba(0, 0, 0, 0.1);
+  border-right: none;
 `
 
 const Direction = styled(Link)`
@@ -94,10 +92,10 @@ const Direction = styled(Link)`
 
   &:hover {
     ${Prev} {
-      background-color: pink;
+      border-right-color: rgba(0, 0, 0, 0.3);
     }
     ${Next} {
-      background-color: silver;
+      border-left-color: rgba(0, 0, 0, 0.3);
     }
   }
 `
@@ -125,7 +123,7 @@ export default ({ data, pageContext }) => {
         <Navbar>
           <Box>
             {previous && (
-              <Direction to={previous.fields.slug}>
+              <Direction to={previous.fields.slug} >
                 <Prev />
               </Direction>
             )}
@@ -171,7 +169,7 @@ export const query = graphql`
         tools
         image {
           childImageSharp {
-            fluid(maxWidth: 1000, quality: 100) {
+            fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
             }
           }
