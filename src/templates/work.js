@@ -107,16 +107,19 @@ const A = styled.a`
 
   p,
   small {
-    color: red;
+    color: #660000;
     text-align: right;
     display: block;
+  }
+
+  &:hover {
+    background-color: #efe5e5;
   }
 `
 
 export default ({ data, pageContext }) => {
   const project = data.markdownRemark
   const { previous, next } = pageContext
-  console.log(pageContext)
   return (
     <Layout>
       <Wrapper>

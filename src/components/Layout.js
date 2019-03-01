@@ -10,22 +10,8 @@ const Layout = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background: white;
+  background: #fff;
 `
-
-// const Content = styled.div`
-//   flex: 1 0 0%;
-//   display: flex;
-//   flex-direction: column;
-//   height: 100%;
-//   min-height: 100%;
-//   width: 100%;
-//   position: relative;
-
-//   @media screen and (orientation: portrait) {
-//     max-width: 700px;
-//   }
-// `
 
 export default ({ children }) => (
   <StaticQuery
