@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Parker Smathers`,
+    title: `parker smathers`,
     siteUrl: `https://parkersmathers.github.io`,
     srcUrl: `https://github.com/parkersmathers/portfolio`,
-    description: `Portfolio for Parker Smathers, book editor turned frontend developer. Iambic JavaScript, responsively designed foobar.`,
+    description: `Portfolio for Parker Smathers, book editor turned frontend developer. Poetic JavaScript responsively designed.`,
     email: `parker@fluorastudio.com`,
     twitterUserName: `@parkerSmathers`
   },
@@ -19,7 +19,7 @@ module.exports = {
         display: `standalone`,
         icon: `src/assets/icon.png`,
         include_favicon: true
-      },
+      }
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-styled-components`,
@@ -27,8 +27,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages/work`,
-        name: `work`,
-      },
+        name: `work`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
