@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import { PageWrapper } from '../../components/Page'
+import Page from '../../components/Page'
 import Layout from '../../components/Layout'
 
-const Wrapper = styled(PageWrapper)`
+const Wrapper = styled(Page)`
   justify-content: flex-start;
   position: relative;
   background: transparent;

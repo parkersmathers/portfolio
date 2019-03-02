@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-import { PageWrapper } from '../components/Page'
+import Page from '../components/Page'
 import Layout from '../components/Layout'
 
-const About = styled(PageWrapper)`
+const About = styled(Page)`
   justify-content: flex-start;
   margin-bottom: 0;
 
@@ -13,7 +13,7 @@ const About = styled(PageWrapper)`
     margin: 0 4.5em;
   }
 
-  p:last-of-type {
+  address {
     margin-left: 6em;
   }
 
@@ -48,9 +48,9 @@ export default ({ data }) => {
           poets, artists, nonprofits, and other industries.
         </p>
         <h3>contact:</h3>
-        <p>
-          <a href={`mailto:${ email }`}>{email}</a>
-        </p>
+        <address>
+          <a href={`mailto:${email}`}>{email}</a>
+        </address>
       </About>
     </Layout>
   )

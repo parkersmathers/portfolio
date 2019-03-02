@@ -3,11 +3,10 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const Header = styled.header`
-  display: flex;
   width: 100%;
 
   @media screen and (orientation: portrait) {
-    align-items: center;
+    /* align-items: center; */
 
     &:first-child {
       text-align: center;
@@ -15,36 +14,61 @@ const Header = styled.header`
   }
 `
 
-const Title = styled.div`
-  flex: 1 0 0%;
-  padding: 1.5em .75em;
-  margin-left: 0.75em;
-  width: 100%;
-
+const Title = styled.h1`
+  font-size: inherit;
+  display: inline-block;
+  width: 50%;
+  
   @media screen and (orientation: portrait) {
-    display: flex;
+    width: auto;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 0;
+    margin-left: 0; */
   }
 `
 
-const Nav = styled(Title)`
-  width: calc(100% - 3em);
+const Nav = styled.nav`
+  display: inline-block;
+  width: 50%;
+
+  li {
+    display: inline-block;
+  }
+`
+
+const HeaderLink = styled(Link)`
+  display: inline-block;
+  padding: 1.75em 1.5em 1.25em;
+
+  &:hover {
+    color: #ff0000;
+  }
+
+  @media screen and (orientation: portrait) {
+    padding-bottom: 0.5em;
+    width: auto;
+    /* background-color: rgb(225, 255, 225); */
+    /* margin-top: 1em; */
+    /* border-radius: 1em 1em 0 0; */
+    /* padding: 1em 1.5em 0.5em; */
+  }
 `
 
 export default ({ title }) => {
   return (
     <Header>
       <Title>
-        <Link to='/'>{title}</Link>
+        <HeaderLink to='/'>{title}</HeaderLink>
       </Title>
       <Nav>
-        <div>
-          <Link to='/work'>work</Link>
-          <span>/</span>
-          <Link to='/about'>about</Link>
-        </div>
+        <ul>
+          <li>
+            <HeaderLink to='/work'>work</HeaderLink>
+            <span>/</span>
+          </li>
+          <li><HeaderLink to='/about'>about</HeaderLink></li>
+        </ul>
       </Nav>
     </Header>
   )

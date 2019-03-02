@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 
-const PageWrapper = styled.section`
+const Page = styled.main`
   flex: 1 0 0%;
   display: flex;
   flex-direction: column;
@@ -17,9 +16,11 @@ const PageWrapper = styled.section`
     margin-left: 3em;
     padding: 2em 0 1em;
   }
-  
+
   @media screen and (orientation: portrait) {
     max-width: 700px;
+    border-color: transparent;
+
     h3 {
       font-weight: normal;
       margin: 0 1em;
@@ -28,7 +29,4 @@ const PageWrapper = styled.section`
   }
 `
 
-const Page = ({ children }) => <PageWrapper>{children}</PageWrapper>
-
 export default Page
-export { PageWrapper }

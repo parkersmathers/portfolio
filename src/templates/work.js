@@ -3,9 +3,9 @@ import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
-import { PageWrapper } from '../components/Page'
+import Page from '../components/Page'
 
-const Wrapper = styled(PageWrapper)`
+const Wrapper = styled(Page)`
   @media screen and (orientation: portrait) {
     flex-direction: column-reverse;
   }

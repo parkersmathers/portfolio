@@ -1,5 +1,6 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
+// import Page from '../components/Page'
 import Header from './Header'
 import Footer from './Footer'
 import styled from 'styled-components'
@@ -32,7 +33,9 @@ export default ({ children }) => (
           <Styles />
           <Layout>
             <Header title={title} />
+            {/* <Page> */}
             {children}
+            {/* </Page> */}
             <Footer title={title} srcUrl={srcUrl} />
           </Layout>
         </>

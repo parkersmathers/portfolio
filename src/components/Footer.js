@@ -1,14 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import github from '../assets/github-32px.png'
 
 const year = new Date().getFullYear()
 
-const StyledFooter = styled.footer`
+const Footer = styled.footer`
   display: flex;
   align-items: center;
-  padding: 1.5em 0.75em;
   width: 100%;
   z-index: 1;
 
@@ -25,6 +23,13 @@ const A = styled.a`
   justify-content: center;
   height: 100%;
   text-decoration: none;
+  padding: 1.5em 0.75em;
+
+  @media screen and (orientation: portrait) {
+    padding-left: 0;
+    padding-right: 0;
+    align-items: center;
+  }
 `
 
 const P = styled.p`
@@ -34,8 +39,13 @@ const P = styled.p`
   justify-content: center;
   font-size: 0.75em;
   height: 100%;
-  margin-left: 0.75em;
+  margin-left: 1.5em;
   text-decoration: none;
+
+  @media screen and (orientation: portrait) {
+    align-items: flex-end;
+    margin-left: 0;
+  }
 `
 
 const Img = styled.img`
@@ -44,20 +54,13 @@ const Img = styled.img`
   width: 1.75em;
 `
 
-const Footer = ({ title, srcUrl }) => (
-  <StyledFooter>
+export default ({ title, srcUrl }) => (
+  <Footer>
     <P>
       ©{year} {title}
     </P>
     <A href={srcUrl} target='_blank' rel='noopener'>
       <Img src={github} alt='source code' />
     </A>
-  </StyledFooter>
+  </Footer>
 )
-
-Footer.propTypes = {
-  title: PropTypes.string.isRequired,
-  srcUrl: PropTypes.string.isRequired
-}
-
-export default Footer
